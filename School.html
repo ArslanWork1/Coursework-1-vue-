@@ -19,7 +19,10 @@
    <!---Lesson 1 code --> 
    
 <div id="Lesson1"> 
+    
+
     <header>
+        <script src="Lessons.js"></script>
     <div class="navbar navbar-default">
         <div class="navbar-header">
             <h1 v-text="sitename"></h1>
@@ -30,37 +33,39 @@
               </ul>
               
               <!--shopping cart-->
-              <button>  {{cartItemCount}}
+              <button @click='showCheckout'>  {{cartItemCount}}
                 <span class="fas fa-cart-plus"></span> Checkout 
-                
       
             </button>
         </header>
 
+        <div>
+
               <div class="row"> <!--Grid class-->
                 <div class="col-md-500 col-md-offset-1">
      <!--This lets me connect with my image vue-->
-      <img v-bind:src="product.image" alt="Maths logo ">
+      <img v-bind:src="product.image" alt="Maths logo "> 
 
       <div class="col-md-6 col-md-offset-0 description">
+        <div v-if= 'showProduct'> 
       <h1 v-text="product.title"></h1> <!-----Product Name------->
       <p v-text="product.location"></p><!-----Product Location------->
       <p v-text="product.price"><!-----Product Price------->
       <p v-text="product.spaces + product.spaceNumber"></p><!--Product space -->
+      <!--add ot cart buttom-->
       <button v-on:click="addToCart" v-show='canAddtoCart'>Add To Cart</button>
-      
-
+      <!-- v-if and v-else-->
         </div>
+<div v-else> 
 
-<div id="Lesson2"></div>
-<div id="Lesson3"></div>
-<div id="Lesson4"></div>
-<div id="Lesson5"></div>
-<div id="Lesson6"></div>
-<div id="Lesson7"></div>
-<div id="Lessson8"></div>
-<div id="Lesson9"></div>
-<div id="Lesson10"></div>
+
+
+</div>
+
+
+
+
+
 
 
 <!--vue start javascript code-->
@@ -80,12 +85,18 @@
             },
 
             cart:[],
+            showProduct: true, 
     },
 
            methods: {
             addToCart: function () {
                 this.cart.push(this.product.id);
-                }
+                },
+
+                showCheckout () {
+                this.showProduct = this.showProduct ? false :true; 
+                },
+
             },   
             computed:{
                 cartItemCount: function () {
