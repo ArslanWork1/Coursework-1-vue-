@@ -27,7 +27,7 @@
             <h1 v-text="sitename"></h1>
             <ul>
                 <li>Home</li>
-                <li>Checkout</li>
+                <li>Socials</li>
                 <li> about</li>
               </ul>
               
@@ -54,6 +54,11 @@
       <!--add ot cart buttom-->
       <button v-on:click="addToCart" v-show='canAddtoCart'>Add To Cart</button>
       <!-- v-if and v-else-->
+      <span v-if='product.spaceNumber- cartItemCount < 3'> 
+          Only {{product.spaceNumber- cartItemCount }} left 
+
+          
+      </span>
         </div>
 <div v-else> 
     <h2>Checkout</h2>
