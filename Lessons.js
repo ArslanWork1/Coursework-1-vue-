@@ -1,5 +1,5 @@
-{
-    "lessons";[
+
+    let lessons=[
         {
             id: 101, 
             title:"Maths",
@@ -108,4 +108,3 @@
 
         }
     ]
-}
