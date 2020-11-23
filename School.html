@@ -20,9 +20,8 @@
    
 <div id="Lesson1"> 
     
-
     <header>
-        <script src="Lessons.js"></script>
+        
     <div class="navbar navbar-default">
         <div class="navbar-header">
             <h1 v-text="sitename"></h1>
@@ -57,9 +56,21 @@
       <!-- v-if and v-else-->
         </div>
 <div v-else> 
+    <h2>Checkout</h2>
+<p>  
+    <strong> First Name </strong>
+    <input v-model="order.firstName" />
+</p>
+<p> 
+    <strong> Phone Number</strong>
+    <input  v-model.number="order.phoneNumber" type="number"/>
+</p>
+<h2> Order information</h2>
+<p>First Name: {{order.firstName}}</p>
+<p>Phone number: {{order.phoneNumber}}</p>
 
 
-
+<button @click= 'submitform'> Submit Order </button>
 </div>
 
 
@@ -86,6 +97,12 @@
 
             cart:[],
             showProduct: true, 
+            order: {
+                firstName: '', 
+                phoneNumber: '', 
+            }
+                
+            
     },
 
            methods: {
@@ -93,9 +110,22 @@
                 this.cart.push(this.product.id);
                 },
 
+                addToCart1: function () {
+                if (this.product.spaceNumber > 0) 
+                    this.product.spaceNumber -= 1; 
+                },
+
+
+
                 showCheckout () {
                 this.showProduct = this.showProduct ? false :true; 
                 },
+
+             submitform (){
+                 alert('Order Confirmed thank you')
+
+             },   
+
 
             },   
             computed:{
@@ -124,6 +154,7 @@ let webstore2 = new Vue({
 })
 
 </script> 
+<script src="Lessons.js"></script>
     
 </body>
 </html>
